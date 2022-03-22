@@ -1,0 +1,31 @@
+<table class="table" *ngIf="obras | async; else sinObras">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Tipo de obra</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Vendido</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obra of obras | async">
+      <th scope="row">{{obra.id}}</th>
+      <td>{{obra.titulo}}</td>
+      <td>{{obra.tipoObra | titlecase}}</td>
+      <td>{{obra.precio | number}}</td>
+      <td>{{obra.vendido}}</td>
+      <td>
+        <button type="button" class="btn btn-primary" [routerLink]="['editar', obra.id]">Editar</button>
+        <button type="button" class="btn btn-danger" (click)="eliminar(obra.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #sinObras>
+  <div class="alert alert-info" role="alert">
+    Actualmente no hay obras.
+  </div>
+</ng-template>

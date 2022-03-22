@@ -1,0 +1,7 @@
+{
+  "/prospectos-vida": {
+    "target": "http://localhost:8000",
+    "logLevel": "debug"
+  }
+
+}
