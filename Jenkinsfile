@@ -46,7 +46,7 @@ pipeline {
     stage('Test Unit') {
       steps{
         echo "------------>Test<------------"
-		    sh 'npm run test --watch=false --browsers ChromeHeadless'
+		    sh 'npm run test -- --watch=false --browsers ChromeHeadless'
       }
     }
 
