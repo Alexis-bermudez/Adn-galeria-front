@@ -1,28 +1,31 @@
-<table class="table" *ngIf="obras | async; else sinObras">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Titulo</th>
-      <th scope="col">Tipo de obra</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Vendido</th>
-      <th scope="col">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let obra of obras | async">
-      <th scope="row">{{obra.id}}</th>
-      <td>{{obra.titulo}}</td>
-      <td>{{obra.tipoObra | titlecase}}</td>
-      <td>{{obra.precio | number}}</td>
-      <td>{{obra.vendido}}</td>
-      <td>
-        <button type="button" class="btn btn-primary" [routerLink]="['editar', obra.id]">Editar</button>
-        <button type="button" class="btn btn-danger" (click)="eliminar(obra.id)">Eliminar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<h3>Lista de obras</h3>
+<div class="table-responsive">
+  <table class="table table-hover" *ngIf="obras?.length > 0; else sinObras">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Tipo de obra</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Vendido</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obra of obras">
+        <th scope="row">{{obra.id}}</th>
+        <td>{{obra.titulo}}</td>
+        <td>{{obra.tipoObra | titlecase}}</td>
+        <td>{{obra.precio | number}}</td>
+        <td>{{obra.vendido ? "Sí" : "No"}}</td>
+        <td>
+          <button type="button" class="btn btn-primary m-1" [routerLink]="['/obra/editar', obra.id]">Editar</button>
+          <button type="button" class="btn btn-danger m-1" (click)="eliminar(obra.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <ng-template #sinObras>
   <div class="alert alert-info" role="alert">

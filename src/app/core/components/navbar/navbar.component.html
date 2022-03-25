@@ -1,12 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="">Galería</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item" *ngFor="let navItem of navItems">
-          <a class="nav-link" [routerLink]="navItem.url" >{{navItem.nombre | titlecase}}</a>
-        </li>
-      </ul>
-    </div>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid text-center">
+    <a class="navbar-brand col-12 col-xl-auto" routerLink="/home">Galería</a>
+
+    <ul class="nav nav-pills col m-3">
+      <li class="nav-item col-12 col-sm-3 col-xl-auto" *ngFor="let navItem of navItems">
+        <a class="nav-link" [routerLink]="navItem.url" routerLinkActive="active">{{navItem.nombre | titlecase}}</a>
+      </li>
+    </ul>
   </div>
 </nav>

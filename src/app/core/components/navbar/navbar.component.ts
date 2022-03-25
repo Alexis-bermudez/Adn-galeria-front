@@ -4,7 +4,14 @@ import { MenuItem } from '@core/modelo/menu-item';
 @Component({
   selector: 'app-navbar',
   templateUrl: 'navbar.component.html',
-  styles: [],
+  styles: [`
+    .nav-link {
+      color: white;
+    }
+    .active {
+      background-color: white;
+    }
+  `],
 })
 export class NavbarComponent implements OnInit {
 

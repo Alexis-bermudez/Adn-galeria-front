@@ -1,0 +1,28 @@
+<form (ngSubmit)="crear()" autocomplete="off" [formGroup]="formulario" *ngIf="hayObrasParaVender; else noHayObras">
+  <div class="mb-3">
+    <label for="obra" class="form-label">Obra a vender:</label>
+    <select formControlName="obra" id="obra" class="form-select">
+      <option value=""></option>
+      <option *ngFor="let obra of obras">{{obra.titulo}}</option>
+    </select>
+    <p class="text-danger" *ngIf="verify('obra')">Debes seleccionar la obra a vender.</p>
+  </div>
+  <div class="mb-3 form-check">
+    <input formControlName="entregaInmediata" type="checkbox" class="form-check-input">
+    <label for="entregaInmediata" class="form-check-label">Entrega inmediata</label>
+    <p class="text-danger" *ngIf="verify('entregaInmediata')">El título debe tener 3 o más caracteres.</p>
+  </div>
+  <div class="mb-3">
+    <label for="fechaCompra" class="form-label">Fecha de compra:</label>
+    <input formControlName="fechaCompra" type="date" class="form-control" id="fechaCompra" [max]="fechaActual">
+  </div>
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="btn btn-success m-3" [disabled]="formulario.invalid">Guardar</button>
+  </div>
+</form>
+
+<ng-template #noHayObras>
+  <div class="alert alert-danger" role="alert">
+    No hay obras para vender, por tanto, no se puede crear un recibo.
+  </div>
+</ng-template>

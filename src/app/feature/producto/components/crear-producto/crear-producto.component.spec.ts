@@ -3,11 +3,11 @@ import { of } from 'rxjs';
 
 import { CrearProductoComponent } from './crear-producto.component';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ProductoService } from '../../shared/service/producto.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CrearProductoComponent', () => {
   let component: CrearProductoComponent;
@@ -19,7 +19,7 @@ describe('CrearProductoComponent', () => {
       declarations: [ CrearProductoComponent ],
       imports: [
         CommonModule,
-        HttpClientModule,
+        HttpClientTestingModule,
         RouterTestingModule,
         ReactiveFormsModule,
         FormsModule
@@ -56,6 +56,6 @@ describe('CrearProductoComponent', () => {
     component.cerar();
 
     // Aca validamos el resultado esperado al enviar la petición
-    // TODO adicionar expect
+    // TODO: adicionar expect
   });
 });

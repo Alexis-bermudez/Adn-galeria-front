@@ -1,0 +1,37 @@
+<h3>Lista de recibos</h3>
+<div class="table-responsive">
+  <table class="table table-hover" *ngIf="recibos.length > 0; else sinRecibos">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Total</th>
+        <th scope="col">¿Entrega inmediata?</th>
+        <th scope="col">Fecha compra</th>
+        <th scope="col">Fecha entrega</th>
+        <th scope="col">Tipo de obra</th>
+        <th scope="col">Id obra</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recibo of recibos">
+        <th scope="row">{{recibo.id}}</th>
+        <td>{{recibo.total | number}}</td>
+        <td>{{recibo.entregaInmediata ? "Sí" : "No"}}</td>
+        <td>{{recibo.fechaCompra | date}}</td>
+        <td>{{recibo.fechaEntrega | date}}</td>
+        <td>{{recibo.tipoObra | titlecase}}</td>
+        <td>{{recibo.idObra}}</td>
+        <td>
+          <button type="button" class="btn btn-danger m-1" (click)="eliminar(recibo.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #sinRecibos>
+  <div class="alert alert-info" role="alert">
+    Actualmente no hay recibos que mostrar.
+  </div>
+</ng-template>

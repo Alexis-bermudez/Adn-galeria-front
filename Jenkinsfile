@@ -63,8 +63,8 @@ pipeline {
         echo '------------>Análisis de código estático<------------'
 		withSonarQubeEnv('Sonar') {
 				//sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
-				sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:adnangular.galeria-bryan.guzman',
-				sonarName:'CeibaADN-ADNAngular-galeria-bryan.guzman',
+				sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:adnangular.galeria.front-bryan.guzman',
+				sonarName:'CeibaADN-ADNAngular-galeriaFront-bryan.guzman',
 				sonarPathProperties:'./sonar-project.properties')
 			}
 

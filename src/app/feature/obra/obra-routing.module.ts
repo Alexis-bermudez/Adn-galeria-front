@@ -19,7 +19,7 @@ const routes: Routes = [
         component: ListarObraComponent
       },
       {
-        path: 'actualizar',
+        path: 'editar/:id',
         component: ActualizarObraComponent
       },
       {

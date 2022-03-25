@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { ObraService } from './shared/service/obra.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,7 @@ import { ActualizarObraComponent } from './components/actualizar-obra/actualizar
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ObraRoutingModule
   ],
   providers: [ObraService]

@@ -1,28 +1,28 @@
-import { Obra } from './../../shared/model/obra';
-import { ObraService } from './../../shared/service/obra.service';
+import { Recibo } from './../../shared/model/recibo';
 import { Component, OnInit } from '@angular/core';
+import { ReciboService } from '../../shared/service/recibo.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-listar-obra',
-  templateUrl: './listar-obra.component.html',
-  styleUrls: ['./listar-obra.component.css']
+  selector: 'app-listar-recibo',
+  templateUrl: './listar-recibo.component.html',
+  styleUrls: ['./listar-recibo.component.css']
 })
-export class ListarObraComponent implements OnInit {
+export class ListarReciboComponent implements OnInit {
 
   constructor(
-    private obraService:ObraService
+    private reciboService:ReciboService,
   ) { }
 
   ngOnInit(): void {
     this.listar();
   }
 
-  obras:Obra[];
+  recibos:Recibo[];
 
   listar(){
-    this.obraService.listar().subscribe(resp => {
-      this.obras = resp;
+    this.reciboService.listar().subscribe(resp => {
+      this.recibos = resp;
     });
   }
 
@@ -45,21 +45,20 @@ export class ListarObraComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.obraService.eliminar(id).subscribe();
+        this.reciboService.eliminar(id).subscribe();
         swalWithBootstrapButtons.fire(
-          '¡Eliminada!',
-          'La obra ha sido eliminada.',
+          '¡Eliminado!',
+          'El recibo ha sido eliminado.',
           'success'
         )
         this.listar();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'La obra está a salvo.',
+          'El recibo está a salvo.',
           'error'
         )
       }
     })
   }
-
 }
