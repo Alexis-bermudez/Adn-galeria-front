@@ -26,7 +26,10 @@ describe('ListarObraComponent', () => {
         CommonModule,
         HttpClientTestingModule
       ],
-      providers: [ObraService, HttpService]
+      providers: [
+        ObraService,
+        HttpService
+      ]
     })
     .compileComponents();
   }));
@@ -36,7 +39,7 @@ describe('ListarObraComponent', () => {
     component = fixture.componentInstance;
     obraService = TestBed.inject(ObraService);
     spyOn(obraService, 'listar').and.returnValue(of(obras));
-    spyOn(obraService, 'eliminar').withArgs(1).and.returnValue(of());
+    spyOn(obraService, 'eliminar').and.returnValue(of());
     fixture.detectChanges();
   });
 
@@ -44,21 +47,18 @@ describe('ListarObraComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Deberia listar obras', () => {
-    expect(component.obras).toEqual([
-      new Obra(1, 'El grito', 'SURREALISMO', 1200000, false),
-      new Obra(2, 'La gran ola', 'REALISMO', 9600000, true)
-    ]);
+  it('Deberia listar las obras', () => {
+    expect(component.obras).toEqual(obras);
   });
 
   it('Deberia eliminar una obra', () => {
     component.eliminar(1);
     expect(Swal.isVisible).toBeTruthy();
     expect(Swal.getTitle().innerHTML).toBe("¿Estás seguro?");
-    Swal.getConfirmButton().click();
+    Swal.clickConfirm();
     setTimeout(() => {
       expect(Swal.getTitle().innerHTML).toBe("¡Eliminada!");
-      Swal.getConfirmButton().click();
+      Swal.clickConfirm();
     });
   });
 

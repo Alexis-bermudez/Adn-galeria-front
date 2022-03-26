@@ -23,9 +23,13 @@ describe('CrearObraComponent', () => {
       component: ListarObraComponent
     }
   ];
-  let router = {
+  const router = {
     navigate: jasmine.createSpy('navigate')
   }
+  const obras:Obra[] = [
+    new Obra(1, 'El grito', 'SURREALISMO', 1200000, false),
+    new Obra(2, 'La gran ola', 'REALISMO', 9600000, true)
+  ];
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -36,7 +40,11 @@ describe('CrearObraComponent', () => {
         RouterTestingModule.withRoutes(routes),
         ReactiveFormsModule
       ],
-      providers: [ObraService, HttpService, { provide: Router, useValue: router }]
+      providers: [
+        ObraService,
+        HttpService,
+        { provide: Router, useValue: router }
+      ]
     })
     .compileComponents();
   }));
@@ -46,10 +54,7 @@ describe('CrearObraComponent', () => {
     component = fixture.componentInstance;
     obraService = TestBed.inject(ObraService);
     spyOn(obraService, 'crear').and.returnValue(of(3));
-    spyOn(obraService, 'listar').and.returnValue(of([
-      new Obra(1, 'El grito', 'SURREALISMO', 1200000, false),
-      new Obra(2, 'La gran ola', 'REALISMO', 9600000, true)
-    ]));
+    spyOn(obraService, 'listar').and.returnValue(of(obras));
     fixture.detectChanges();
   });
 

@@ -25,7 +25,7 @@ export class CrearReciboComponent implements OnInit {
     this.obraService.listar().subscribe(resp => {
       this.obras = resp;
       if(this.obras.find(obra=>obra.vendido == false)){
-        this.obras = this.obras.filter(obra => {return obra.vendido == false})
+        this.obrasParaVender = this.obras.filter(obra => {return obra.vendido == false})
         this.hayObrasParaVender = true;
         this.reciboService.listar().subscribe(resp => {
           this.recibos = resp;
@@ -54,6 +54,7 @@ export class CrearReciboComponent implements OnInit {
   });
 
   obras:Obra[];
+  obrasParaVender:Obra[];
   recibos:Recibo[];
 
   crear(){
@@ -72,7 +73,7 @@ export class CrearReciboComponent implements OnInit {
     if(dia.getDay() == this.diaProhibido){
       Swal.fire({
         icon: 'error',
-        title: 'Oops...',
+        title: 'Oh no, es sábado...',
         text: 'No se pueden vender obras los días sábados.',
       })
       return;
@@ -86,13 +87,12 @@ export class CrearReciboComponent implements OnInit {
       null,
       obra.tipoObra,
       obra.id
-      );
-
-    if(this.recibos.find(t=>t.idObra == recibo.idObra)){
+    );
+    if(this.recibos?.find(t=>t.idObra == recibo.idObra)){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Ya existe un recibo para esa obra.',
+        text: 'No se encontró la obra, quizá ya tenga recibo o esté registrada.',
       })
       return;
     }

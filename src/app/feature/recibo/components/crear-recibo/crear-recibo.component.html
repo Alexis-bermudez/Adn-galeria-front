@@ -3,7 +3,7 @@
     <label for="obra" class="form-label">Obra a vender:</label>
     <select formControlName="obra" id="obra" class="form-select">
       <option value=""></option>
-      <option *ngFor="let obra of obras">{{obra.titulo}}</option>
+      <option *ngFor="let obra of obrasParaVender">{{obra.titulo}}</option>
     </select>
     <p class="text-danger" *ngIf="verify('obra')">Debes seleccionar la obra a vender.</p>
   </div>
