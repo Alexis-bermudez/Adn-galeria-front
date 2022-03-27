@@ -13,6 +13,7 @@ exports.config = {
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
+  SELENIUM_PROMISE_MANAGER: false,
   capabilities: {
     'browserName': 'chrome'
   },
@@ -32,6 +33,6 @@ exports.config = {
     jasmine.getEnv().addReporter(new HtmlReporter({
       baseDirectory: 'tmp/screenshots'
    }).getJasmine2Reporter());
-    
+
   }
 };
