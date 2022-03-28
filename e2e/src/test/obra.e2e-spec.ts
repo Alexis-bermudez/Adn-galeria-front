@@ -29,7 +29,7 @@ describe('workspace-project Producto', () => {
         expect(obra.contarObras()).toBe(1);
     });
 
-    it('Deberia listar productos', () => {
+    it('Deberia listar obra', () => {
         page.navigateTo();
         navBar.clickLinkObra();
 
