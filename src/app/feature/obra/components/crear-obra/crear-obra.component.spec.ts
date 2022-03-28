@@ -16,8 +16,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('CrearObraComponent', () => {
   let component: CrearObraComponent;
   let fixture: ComponentFixture<CrearObraComponent>;
-  let obraService:ObraService;
-  const routes:Routes = [
+  let obraService: ObraService;
+  const routes: Routes = [
     {
       path: 'obra/listar',
       component: ListarObraComponent
@@ -25,8 +25,8 @@ describe('CrearObraComponent', () => {
   ];
   const router = {
     navigate: jasmine.createSpy('navigate')
-  }
-  const obras:Obra[] = [
+  };
+  const obras: Obra[] = [
     new Obra(1, 'El grito', 'SURREALISMO', 1200000, false),
     new Obra(2, 'La gran ola', 'REALISMO', 9600000, true)
   ];
@@ -90,7 +90,7 @@ describe('CrearObraComponent', () => {
     component.formulario.controls.precio.setValue(3600000);
     expect(component.formulario.valid).toBeTruthy();
     component.crear();
-    expect(Swal.getTitle().innerHTML).toBe("Oops...")
+    expect(Swal.getTitle().innerHTML).toBe('Oops...');
     Swal.clickConfirm();
   });
 });

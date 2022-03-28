@@ -10,7 +10,6 @@ const routes: Routes = [
     component: ReciboComponent,
     children: [
       {
-        // TODO: impedir con guard, que vaya a crear si no hay obras para VENDER.
         path: 'crear',
         component: CrearReciboComponent
       },

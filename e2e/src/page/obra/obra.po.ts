@@ -16,15 +16,15 @@ export class ObraPage {
     await this.btnCrearObra.click();
   }
 
-  async ingresarTitulo(titulo:string) {
+  async ingresarTitulo(titulo: string) {
     await this.inputTitulo.sendKeys(titulo);
   }
 
-  async ingresarTipoObra(tipoObra:string) {
+  async ingresarTipoObra(tipoObra: string) {
     await this.selectTipoObra.sendKeys(tipoObra);
   }
 
-  async ingresarPrecio(precio:number) {
+  async ingresarPrecio(precio: number) {
     await this.inputPrecio.sendKeys(precio);
   }
 

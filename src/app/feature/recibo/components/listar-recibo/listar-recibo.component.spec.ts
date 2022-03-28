@@ -12,8 +12,8 @@ import Swal from 'sweetalert2';
 describe('ListarReciboComponent', () => {
   let component: ListarReciboComponent;
   let fixture: ComponentFixture<ListarReciboComponent>;
-  let reciboService:ReciboService;
-  const recibos:Recibo[] = [
+  let reciboService: ReciboService;
+  const recibos: Recibo[] = [
     new Recibo(1, 3600000, false, '2022-03-25', '2022-04-09', 'REALISMO', 1),
     new Recibo(2, 1284000, true, '2022-03-27', '2022-03-27', 'SURREALISMO', 2)
   ];
@@ -53,20 +53,20 @@ describe('ListarReciboComponent', () => {
   it('Deberia eliminar un recibo', () => {
     component.eliminar(1);
     expect(Swal.isVisible).toBeTruthy();
-    expect(Swal.getTitle().innerHTML).toBe("¿Estás seguro?");
+    expect(Swal.getTitle().innerHTML).toBe('¿Estás seguro?');
     Swal.clickConfirm();
     setTimeout(() => {
-      expect(Swal.getTitle().innerHTML).toBe("¡Eliminado!");
+      expect(Swal.getTitle().innerHTML).toBe('¡Eliminado!');
       Swal.clickConfirm();
     });
   });
 
   it('Deberia cancelar al eliminar un recibo', () => {
     component.eliminar(1);
-    expect(Swal.getTitle().innerHTML).toBe("¿Estás seguro?");
+    expect(Swal.getTitle().innerHTML).toBe('¿Estás seguro?');
     Swal.clickCancel();
     setTimeout(() => {
-      expect(Swal.getTitle().innerHTML).toBe("Cancelado");
+      expect(Swal.getTitle().innerHTML).toBe('Cancelado');
       Swal.clickConfirm();
     });
   });

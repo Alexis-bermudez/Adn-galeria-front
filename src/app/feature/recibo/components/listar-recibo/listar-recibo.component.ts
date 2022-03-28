@@ -6,19 +6,19 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-listar-recibo',
   templateUrl: './listar-recibo.component.html',
-  styleUrls: ['./listar-recibo.component.css']
+  styles: []
 })
 export class ListarReciboComponent implements OnInit {
 
   constructor(
-    private reciboService:ReciboService,
+    private reciboService: ReciboService,
   ) { }
+
+  recibos: Recibo[];
 
   ngOnInit(): void {
     this.listar();
   }
-
-  recibos:Recibo[];
 
   listar(){
     this.reciboService.listar().subscribe(resp => {
@@ -26,18 +26,18 @@ export class ListarReciboComponent implements OnInit {
     });
   }
 
-  eliminar(id:number){
+  eliminar(id: number){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success m-2',
         cancelButton: 'btn btn-danger m-2'
       },
       buttonsStyling: false
-    })
+    });
 
     swalWithBootstrapButtons.fire({
       title: '¿Estás seguro?',
-      text: "No podrás revertir esta acción.",
+      text: 'No podrás revertir esta acción.',
       icon: 'warning',
       showCancelButton: true,
       cancelButtonText: 'Cancelar',
@@ -50,15 +50,15 @@ export class ListarReciboComponent implements OnInit {
           '¡Eliminado!',
           'El recibo ha sido eliminado.',
           'success'
-        )
+        );
         this.listar();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
           'El recibo está a salvo.',
           'error'
-        )
+        );
       }
-    })
+    });
   }
 }

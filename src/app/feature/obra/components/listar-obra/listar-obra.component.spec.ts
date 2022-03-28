@@ -13,8 +13,8 @@ import { of } from 'rxjs';
 describe('ListarObraComponent', () => {
   let component: ListarObraComponent;
   let fixture: ComponentFixture<ListarObraComponent>;
-  let obraService:ObraService;
-  const obras:Obra[] = [
+  let obraService: ObraService;
+  const obras: Obra[] = [
     new Obra(1, 'El grito', 'SURREALISMO', 1200000, false),
     new Obra(2, 'La gran ola', 'REALISMO', 9600000, true)
   ];
@@ -54,20 +54,20 @@ describe('ListarObraComponent', () => {
   it('Deberia eliminar una obra', () => {
     component.eliminar(1);
     expect(Swal.isVisible).toBeTruthy();
-    expect(Swal.getTitle().innerHTML).toBe("¿Estás seguro?");
+    expect(Swal.getTitle().innerHTML).toBe('¿Estás seguro?');
     Swal.clickConfirm();
     setTimeout(() => {
-      expect(Swal.getTitle().innerHTML).toBe("¡Eliminada!");
+      expect(Swal.getTitle().innerHTML).toBe('¡Eliminada!');
       Swal.clickConfirm();
     });
   });
 
   it('Deberia cancelar al eliminar una obra', () => {
     component.eliminar(1);
-    expect(Swal.getTitle().innerHTML).toBe("¿Estás seguro?");
+    expect(Swal.getTitle().innerHTML).toBe('¿Estás seguro?');
     Swal.clickCancel();
     setTimeout(() => {
-      expect(Swal.getTitle().innerHTML).toBe("Cancelado");
+      expect(Swal.getTitle().innerHTML).toBe('Cancelado');
       Swal.clickConfirm();
     });
   });

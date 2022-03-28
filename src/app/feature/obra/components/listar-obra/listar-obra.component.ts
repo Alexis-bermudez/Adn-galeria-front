@@ -6,19 +6,19 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-listar-obra',
   templateUrl: './listar-obra.component.html',
-  styleUrls: ['./listar-obra.component.css']
+  styles: []
 })
 export class ListarObraComponent implements OnInit {
 
   constructor(
-    private obraService:ObraService
+    private obraService: ObraService
   ) { }
+
+  obras: Obra[];
 
   ngOnInit(): void {
     this.listar();
   }
-
-  obras:Obra[];
 
   listar(){
     this.obraService.listar().subscribe(resp => {
@@ -26,18 +26,18 @@ export class ListarObraComponent implements OnInit {
     });
   }
 
-  eliminar(id:number){
+  eliminar(id: number){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success m-2',
         cancelButton: 'btn btn-danger m-2'
       },
       buttonsStyling: false
-    })
+    });
 
     swalWithBootstrapButtons.fire({
       title: '¿Estás seguro?',
-      text: "No podrás revertir esta acción.",
+      text: 'No podrás revertir esta acción.',
       icon: 'warning',
       showCancelButton: true,
       cancelButtonText: 'Cancelar',
@@ -50,16 +50,16 @@ export class ListarObraComponent implements OnInit {
           '¡Eliminada!',
           'La obra ha sido eliminada.',
           'success'
-        )
+        );
         this.listar();
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
           'La obra está a salvo.',
           'error'
-        )
+        );
       }
-    })
+    });
   }
 
 }

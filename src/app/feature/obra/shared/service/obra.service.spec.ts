@@ -8,8 +8,8 @@ import { ObraService } from './obra.service';
 import { HttpResponse } from '@angular/common/http';
 
 describe('ObraService', () => {
-  let httpMock:HttpTestingController;
-  let service:ObraService;
+  let httpMock: HttpTestingController;
+  let service: ObraService;
   const apiEndpointObras = `${environment.endpoint}/obras`;
 
   beforeEach(() => {
@@ -17,12 +17,12 @@ describe('ObraService', () => {
       imports: [HttpClientTestingModule],
       providers: [ObraService, HttpService]
     });
-    httpMock = injector.inject(HttpTestingController)
+    httpMock = injector.inject(HttpTestingController);
     service = TestBed.inject(ObraService);
   });
 
   it('should be created', () => {
-    const obraService:ObraService = TestBed.inject(ObraService);
+    const obraService: ObraService = TestBed.inject(ObraService);
     expect(obraService).toBeTruthy();
   });
 

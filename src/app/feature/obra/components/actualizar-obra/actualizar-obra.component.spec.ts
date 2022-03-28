@@ -15,16 +15,16 @@ import { of } from 'rxjs';
 describe('ActualizarObraComponent', () => {
   let component: ActualizarObraComponent;
   let fixture: ComponentFixture<ActualizarObraComponent>;
-  let obraService:ObraService;
-  const routes:Routes = [
+  let obraService: ObraService;
+  const routes: Routes = [
     {
       path: 'obra/listar',
       component: ListarObraComponent
     }
   ];
-  let router = {
+  const router = {
     navigate: jasmine.createSpy('navigate')
-  }
+  };
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({

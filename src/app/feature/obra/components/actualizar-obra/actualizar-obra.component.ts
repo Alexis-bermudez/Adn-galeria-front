@@ -4,40 +4,43 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Obra } from '../../shared/model/obra';
 import { ObraService } from '../../shared/service/obra.service';
 
+const MIN_LENGTH_TITULO = 3;
+const PRECIO_MINIMO = 1;
+
 @Component({
   selector: 'app-actualizar-obra',
   templateUrl: './actualizar-obra.component.html',
-  styleUrls: ['./actualizar-obra.component.css']
+  styles: []
 })
 export class ActualizarObraComponent implements OnInit {
 
   formulario: FormGroup = this.fb.group({
-    titulo: ['', [Validators.required, Validators.minLength(3)]],
+    titulo: ['', [Validators.required, Validators.minLength(MIN_LENGTH_TITULO)]],
     tipoObra: ['', [Validators.required]],
-    precio: ['', [Validators.required, Validators.min(1)]],
-  })
+    precio: ['', [Validators.required, Validators.min(PRECIO_MINIMO)]],
+  });
 
   constructor(
-    private activeRoute:ActivatedRoute,
-    private obraService:ObraService,
-    private fb:FormBuilder,
-    private router:Router
+    private activeRoute: ActivatedRoute,
+    private obraService: ObraService,
+    private fb: FormBuilder,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
   }
 
   actualizar(){
-    if(this.formulario.invalid){
+    if (this.formulario.invalid){
       this.formulario.markAllAsTouched();
       return;
     }
 
-    let obra:Obra = new Obra(
+    const obra: Obra = new Obra(
       this.activeRoute.snapshot.params.id,
-      this.formulario.controls["titulo"].value,
-      this.formulario.controls["tipoObra"].value,
-      this.formulario.controls["precio"].value,
+      this.formulario.controls.titulo.value,
+      this.formulario.controls.tipoObra.value,
+      this.formulario.controls.precio.value,
       false
       );
 
@@ -46,7 +49,7 @@ export class ActualizarObraComponent implements OnInit {
 
   }
 
-  verify(campo:string){
+  verify(campo: string){
     return this.formulario.controls[campo].errors && this.formulario.controls[campo].touched;
   }
 

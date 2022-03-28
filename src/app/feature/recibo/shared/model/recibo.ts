@@ -1,13 +1,13 @@
 export class Recibo {
-  id:number;
-  total:number;
-  entregaInmediata:boolean;
-  fechaCompra:string;
-  fechaEntrega:string;
-  tipoObra:string;
-  idObra:number;
+  id: number;
+  total: number;
+  entregaInmediata: boolean;
+  fechaCompra: string;
+  fechaEntrega: string;
+  tipoObra: string;
+  idObra: number;
 
-  constructor(id:number, total:number, entregaInmediata:boolean, fechaCompra:string, fechaEntrega:string, tipoObra:string, idObra:number){
+  constructor(id: number, total: number, entregaInmediata: boolean, fechaCompra: string, fechaEntrega: string, tipoObra: string, idObra: number){
     this.id = id;
     this.total = total;
     this.entregaInmediata = entregaInmediata;

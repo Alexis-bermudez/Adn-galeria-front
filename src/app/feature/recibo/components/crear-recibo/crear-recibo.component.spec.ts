@@ -18,9 +18,9 @@ import Swal from 'sweetalert2';
 describe('CrearReciboComponent', () => {
   let component: CrearReciboComponent;
   let fixture: ComponentFixture<CrearReciboComponent>;
-  let reciboService:ReciboService;
-  let obraService:ObraService;
-  const routes:Routes = [
+  let reciboService: ReciboService;
+  let obraService: ObraService;
+  const routes: Routes = [
     {
       path: 'recibo/listar',
       component: ListarReciboComponent
@@ -28,12 +28,12 @@ describe('CrearReciboComponent', () => {
   ];
   const router = {
     navigate: jasmine.createSpy('navigate')
-  }
-  const obras:Obra[] = [
+  };
+  const obras: Obra[] = [
     new Obra(1, 'El grito', 'SURREALISMO', 1200000, false),
     new Obra(2, 'La gran ola', 'REALISMO', 9600000, true)
   ];
-  const recibos:Recibo[] = [
+  const recibos: Recibo[] = [
     new Recibo(2, 1284000, true, '2022-03-27', '2022-03-27', 'SURREALISMO', 2)
   ];
 

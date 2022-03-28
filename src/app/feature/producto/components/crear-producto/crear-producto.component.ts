@@ -8,7 +8,7 @@ const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
 @Component({
   selector: 'app-crear-producto',
   templateUrl: './crear-producto.component.html',
-  styleUrls: ['./crear-producto.component.css']
+  styles: []
 })
 export class CrearProductoComponent implements OnInit {
   productoForm: FormGroup;

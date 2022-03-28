@@ -8,8 +8,8 @@ import { ReciboService } from './recibo.service';
 import { HttpResponse } from '@angular/common/http';
 
 describe('ReciboService', () => {
-  let httpMock:HttpTestingController
-  let service:ReciboService;
+  let httpMock: HttpTestingController;
+  let service: ReciboService;
   const apiEndpointRecibos = `${environment.endpoint}/recibos`;
 
   beforeEach(() => {
@@ -22,14 +22,14 @@ describe('ReciboService', () => {
   });
 
   it('should be created', () => {
-    const reciboService:ReciboService = TestBed.inject(ReciboService);
+    const reciboService: ReciboService = TestBed.inject(ReciboService);
     expect(reciboService).toBeTruthy();
   });
 
   it('Deberia listar los recibos', () => {
     const dummyRecibos = [
-      new Recibo(1, 3600000, false, "2022-03-24", "2022-04-08", "REALISMO", 3),
-      new Recibo(2, 1200000, true, "2022-03-24", "2022-03-24", "REALISMO", 3)
+      new Recibo(1, 3600000, false, '2022-03-24', '2022-04-08', 'REALISMO', 3),
+      new Recibo(2, 1200000, true, '2022-03-24', '2022-03-24', 'REALISMO', 3)
     ];
     service.listar().subscribe(recibos => {
       expect(recibos.length).toEqual(2);
@@ -41,7 +41,7 @@ describe('ReciboService', () => {
   });
 
   it('Deberia crear un recibo', () => {
-    const dummyRecibo = new Recibo(null, 3600000, false, "2022-03-24", "2022-04-08", "REALISMO", 1);
+    const dummyRecibo = new Recibo(null, 3600000, false, '2022-03-24', '2022-04-08', 'REALISMO', 1);
     service.crear(dummyRecibo).subscribe((id) => {
       expect(id).toEqual(1);
     });
